@@ -6,9 +6,6 @@ my $config_content;
 my $gtk_theme = $ARGV[0];
 my $icon_theme = $ARGV[1];
 
-if ($theme) {
-}
-
 if ($gtk_theme) {
     open(FH, '<' . $config) or die "Unable to open\n";
     while(<FH>) {

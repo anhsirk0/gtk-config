@@ -6,7 +6,11 @@ my $config_content;
 my $gtk_theme = $ARGV[0];
 my $icon_theme = $ARGV[1];
 
+if ($theme) {
+}
+
 if ($gtk_theme) {
+    # read config
     open(FH, '<' . $config) or die "Unable to open\n";
     while(<FH>) {
 	if ($_ =~ /^gtk-theme-name/) {
@@ -18,8 +22,12 @@ if ($gtk_theme) {
 	}
 	$config_content .= $_;
     }
+    close(FH);
+
+    # write config
     open(FH, '>' . $config) or die "Unable to open\n";
     print FH $config_content;
+    close(FH);
     print "\'$gtk_theme\' gtk-theme selected\n";
     if ($icon_theme) { print "\'$icon_theme\' icon-theme selected\n"; }
 } else {
